@@ -1,0 +1,74 @@
+@model IEnumerable<RawTorpedo.Models.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BGGID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BGGUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxNumberOfPlayers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinNumberOfPlayers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Playtime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SweetNumberOfPlayers)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BGGID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BGGUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxNumberOfPlayers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinNumberOfPlayers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Playtime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SweetNumberOfPlayers)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+    </tr>
+}
+</table>
