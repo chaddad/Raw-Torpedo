@@ -2,6 +2,7 @@ using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
+using Microsoft.Data.Entity.Migrations;
 using RawTorpedo.Models;
 
 namespace RawTorpedo.Migrations
@@ -12,7 +13,7 @@ namespace RawTorpedo.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-beta8")
+                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRole", b =>
@@ -45,7 +46,8 @@ namespace RawTorpedo.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("RoleId");
+                    b.Property<string>("RoleId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -61,7 +63,8 @@ namespace RawTorpedo.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -76,7 +79,8 @@ namespace RawTorpedo.Migrations
 
                     b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -124,6 +128,8 @@ namespace RawTorpedo.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<string>("PublicUserName");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -140,6 +146,81 @@ namespace RawTorpedo.Migrations
                         .HasAnnotation("Relational:Name", "UserNameIndex");
 
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Game", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BGGID");
+
+                    b.Property<string>("BGGUrl");
+
+                    b.Property<string>("GameName")
+                        .IsRequired();
+
+                    b.Property<int>("MaxNumberOfPlayers");
+
+                    b.Property<int>("MinNumberOfPlayers");
+
+                    b.Property<int?>("ParentGameID");
+
+                    b.Property<int>("Playtime");
+
+                    b.Property<DateTime>("PublishedDate");
+
+                    b.Property<int>("SweetNumberOfPlayers");
+
+                    b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Designer", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameID");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Mechanic", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameID");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Publisher", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameID");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Theme", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameID");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -172,6 +253,41 @@ namespace RawTorpedo.Migrations
                     b.HasOne("RawTorpedo.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Game", b =>
+                {
+                    b.HasOne("RawTorpedo.Models.Game")
+                        .WithMany()
+                        .HasForeignKey("ParentGameID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Designer", b =>
+                {
+                    b.HasOne("RawTorpedo.Models.Game")
+                        .WithMany()
+                        .HasForeignKey("GameID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Mechanic", b =>
+                {
+                    b.HasOne("RawTorpedo.Models.Game")
+                        .WithMany()
+                        .HasForeignKey("GameID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Publisher", b =>
+                {
+                    b.HasOne("RawTorpedo.Models.Game")
+                        .WithMany()
+                        .HasForeignKey("GameID");
+                });
+
+            modelBuilder.Entity("RawTorpedo.Models.Support.Theme", b =>
+                {
+                    b.HasOne("RawTorpedo.Models.Game")
+                        .WithMany()
+                        .HasForeignKey("GameID");
                 });
         }
     }
