@@ -108,6 +108,8 @@ namespace RawTorpedo
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Models.Seed.SeedManager.Initialize(app.ApplicationServices);
         }
 
         // Entry point for the application.
