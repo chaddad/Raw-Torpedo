@@ -27,5 +27,11 @@ namespace RawTorpedo.Domain
             [Display(Name = "Over 8 hours")]
             SeriouslyTwoFuckingDays
         };
+
+        public enum CollectionType
+        {
+            Collection,
+            Wishlist
+        }
     }
 }

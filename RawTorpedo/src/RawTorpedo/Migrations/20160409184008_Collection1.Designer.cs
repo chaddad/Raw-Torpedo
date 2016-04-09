@@ -8,9 +8,10 @@ using RawTorpedo.Models;
 namespace RawTorpedo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160409184008_Collection1")]
+    partial class Collection1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -148,20 +149,6 @@ namespace RawTorpedo.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
-            modelBuilder.Entity("RawTorpedo.Models.Collection", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CollectionType");
-
-                    b.Property<int?>("GameID");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("ID");
-                });
-
             modelBuilder.Entity("RawTorpedo.Models.Game", b =>
                 {
                     b.Property<int>("ID")
@@ -263,17 +250,6 @@ namespace RawTorpedo.Migrations
                     b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
                         .WithMany()
                         .HasForeignKey("RoleId");
-
-                    b.HasOne("RawTorpedo.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("RawTorpedo.Models.Collection", b =>
-                {
-                    b.HasOne("RawTorpedo.Models.Game")
-                        .WithMany()
-                        .HasForeignKey("GameID");
 
                     b.HasOne("RawTorpedo.Models.ApplicationUser")
                         .WithMany()
