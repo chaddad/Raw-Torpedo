@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RawTorpedo.Models
 {
@@ -10,19 +8,39 @@ namespace RawTorpedo.Models
     {
         public int ID { get; set; }
 
+        /// <summary>
+        /// That's the name of the game!
+        /// </summary>
         [Required]
         [Display(Name = "Game Name")]
         public string GameName { get; set; }
 
-        public virtual Support.Publisher Publisher { get; set; }
+        /// <summary>
+        /// List of publishers for the game
+        /// </summary>
+        public virtual IEnumerable<Support.Publisher> Publisher { get; set; }
 
+        /// <summary>
+        /// Date the game was published
+        /// </summary>
         [Display(Name = "Published Date")]
         public DateTime PublishedDate { get; set; }
-
+        
+        /// <summary>
+        /// Maximum number of players
+        /// </summary>
         [Display(Name = "Maximum Number of Players")]
         public int MaxNumberOfPlayers { get; set; }
+
+        /// <summary>
+        /// Minimum number of players
+        /// </summary>
         [Display(Name = "Minimum Number of Players")]
         public int MinNumberOfPlayers { get; set; }
+
+        /// <summary>
+        /// Sweet Spot for number of players, 0 = any number
+        /// </summary>
         [Display(Name = "Best Played With")]
         public int SweetNumberOfPlayers { get; set; }
 
@@ -39,11 +57,13 @@ namespace RawTorpedo.Models
         /// <summary>
         /// Used to relate expansions and their parent game
         /// </summary>
+        [Display(Name = "Parent Game")]
         public virtual Game ParentGame { get; set; }
 
         /// <summary>
         /// Average game length
         /// </summary>
+        [Display(Name = "Average Playtime")]
         public Domain.Enums.Playtime Playtime { get; set; }
 
         /// <summary>

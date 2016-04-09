@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RawTorpedo.Models.Support
 {
@@ -9,6 +6,10 @@ namespace RawTorpedo.Models.Support
     {
         public int ID { get; set; }
 
+        /// <summary>
+        /// Designer's name
+        /// </summary>
+        [Display(Name = "Designer's Name")]
         public string Name { get; set; }
     }
 }
