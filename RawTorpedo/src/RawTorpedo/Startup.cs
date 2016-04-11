@@ -102,7 +102,7 @@ namespace RawTorpedo
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Collections}/{action=Index}/{id?}");
             });
 
             Models.Seed.SeedManager.Initialize(app.ApplicationServices);
