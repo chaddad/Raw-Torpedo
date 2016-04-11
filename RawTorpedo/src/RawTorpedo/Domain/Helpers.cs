@@ -33,6 +33,11 @@ namespace RawTorpedo
             return output;
         }
 
+        public static string GetDisplayName(this Enum e)
+        {
+            return e.GetAttributeValue<DisplayAttribute>(x => x.Name);
+        }
+
         /// <summary>
         /// Converts an enum to a SelectListItem list, using the annotated Display(Name) values as the corresponding dropdown values
         /// </summary>
