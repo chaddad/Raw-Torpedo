@@ -12,28 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BGGID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BGGUrl)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.GameName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaxNumberOfPlayers)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MinNumberOfPlayers)
+            Number of Players
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Playtime)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PublishedDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SweetNumberOfPlayers)
+            @Html.DisplayNameFor(model => model.Mechanics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Themes)
         </th>
         <th></th>
     </tr>
@@ -41,29 +38,26 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.BGGID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BGGUrl)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.GameName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaxNumberOfPlayers)
+            @String.Format("{0} - {1} | {2}", Html.DisplayFor(modelItem => item.MinNumberOfPlayers), Html.DisplayFor(modelItem => item.MaxNumberOfPlayers), Html.DisplayFor(modelItem => item.SweetNumberOfPlayers))
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MinNumberOfPlayers)
+            @Html.DisplayFor(modelItem => item.Playtime.GetDisplayName())
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Playtime)
+            @Html.DisplayFor(modelItem => item.Publisher)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PublishedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SweetNumberOfPlayers)
+            @Html.DisplayFor(modelItem => item.Mechanics)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Themes)
+        </td>        
         <td>
             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
             <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
