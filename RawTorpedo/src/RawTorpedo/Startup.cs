@@ -105,7 +105,8 @@ namespace RawTorpedo
                     template: "{controller=Collections}/{action=Index}/{id?}");
             });
 
-            Models.Seed.SeedManager.Initialize(app.ApplicationServices);
+            bool refresh = bool.Parse(Configuration["RefreshDatabase"]);
+            Models.Seed.SeedManager.Initialize(app.ApplicationServices, refresh);
         }
 
         // Entry point for the application.
