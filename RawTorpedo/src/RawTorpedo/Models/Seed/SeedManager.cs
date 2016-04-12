@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
 using System.Linq;
 
 namespace RawTorpedo.Models.Seed

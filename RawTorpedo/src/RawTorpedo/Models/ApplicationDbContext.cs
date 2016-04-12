@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
-using RawTorpedo.Models;
 using RawTorpedo.Models.Support;
 
 namespace RawTorpedo.Models
