@@ -41,10 +41,10 @@
             @Html.DisplayFor(modelItem => item.GameName)
         </td>
         <td>
-            @String.Format("{0} - {1} | {2}", Html.DisplayFor(modelItem => item.MinNumberOfPlayers), Html.DisplayFor(modelItem => item.MaxNumberOfPlayers), Html.DisplayFor(modelItem => item.SweetNumberOfPlayers))
+            @String.Format("{0} - {1} | {2}", item.MinNumberOfPlayers, item.MaxNumberOfPlayers, item.SweetNumberOfPlayers)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Playtime.GetDisplayName())
+            @item.Playtime.GetDisplayName()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Publisher)
