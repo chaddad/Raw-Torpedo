@@ -1,6 +1,7 @@
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using RawTorpedo.Models;
+using Microsoft.Data.Entity;
 
 namespace RawTorpedo.Controllers
 {
@@ -16,7 +17,7 @@ namespace RawTorpedo.Controllers
         // GET: Collections
         public IActionResult Index()
         {
-            return View(_context.Collection.ToList());
+            return View(_context.Collection.Include(x => x.Game).Include(x => x.User).ToList());
         }
 
         // GET: Collections/Details/5
