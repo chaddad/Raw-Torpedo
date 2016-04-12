@@ -24,6 +24,7 @@ namespace RawTorpedo.Models
         /// Date the game was published
         /// </summary>
         [Display(Name = "Published Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PublishedDate { get; set; }
         
         /// <summary>
