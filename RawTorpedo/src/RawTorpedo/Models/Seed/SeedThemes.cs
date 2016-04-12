@@ -9,7 +9,10 @@ namespace RawTorpedo.Models.Seed
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            
+            if (context.Theme.Any())
+                return;
+
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using RawTorpedo.Models;
+using RawTorpedo.Models.Support;
 
 namespace RawTorpedo.Models
 {
@@ -15,5 +16,9 @@ namespace RawTorpedo.Models
         }
         public DbSet<Game> Game { get; set; }
         public DbSet<Collection> Collection { get; set; }
+        public DbSet<Theme> Theme { get; set; }
+        public DbSet<Designer> Designer { get; set; }
+        public DbSet<Mechanic> Mechanic { get; set; }
+        public DbSet<Publisher> Publisher { get; set; }
     }
 }
