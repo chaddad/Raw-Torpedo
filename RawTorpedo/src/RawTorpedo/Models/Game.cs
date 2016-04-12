@@ -18,7 +18,7 @@ namespace RawTorpedo.Models
         /// <summary>
         /// List of publishers for the game
         /// </summary>
-        public virtual IEnumerable<Support.Publisher> Publisher { get; set; }
+        public virtual ICollection<Support.Publisher> Publisher { get; set; }
 
         /// <summary>
         /// Date the game was published
@@ -47,12 +47,12 @@ namespace RawTorpedo.Models
         /// <summary>
         /// Mechanics used by gameplay, such as dice rolling, trick taking, card drafting
         /// </summary>
-        public virtual IEnumerable<Support.Mechanic> Mechanics { get; set; }
+        public virtual ICollection<Support.Mechanic> Mechanics { get; set; }
 
         /// <summary>
         /// Categories for organzing games, such as travel, space exploration, sci-fi
         /// </summary>
-        public virtual IEnumerable<Support.Theme> Themes { get; set; }
+        public virtual ICollection<Support.Theme> Themes { get; set; }
 
         /// <summary>
         /// Used to relate expansions and their parent game
@@ -69,7 +69,7 @@ namespace RawTorpedo.Models
         /// <summary>
         /// Designers of the game
         /// </summary>
-        public virtual IEnumerable<Support.Designer> Designer { get; set; }
+        public virtual ICollection<Support.Designer> Designer { get; set; }
 
         /// <summary>
         /// ID for the game on that big-ass website
