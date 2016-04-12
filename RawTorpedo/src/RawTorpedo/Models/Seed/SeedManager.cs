@@ -18,11 +18,7 @@ namespace RawTorpedo.Models.Seed
             if (refreshDatabase)
             {
                 context.Collection.RemoveRange(context.Collection.Where(x => x.ID > 0));
-                context.SaveChanges();
-
                 context.Game.RemoveRange(context.Game.Where(x => x.ID > 0));
-                context.SaveChanges();
-
                 context.Designer.RemoveRange(context.Designer.Where(x => x.ID > 0));
                 context.Mechanic.RemoveRange(context.Mechanic.Where(x => x.ID > 0));
                 context.Publisher.RemoveRange(context.Publisher.Where(x => x.ID > 0));
@@ -39,7 +35,7 @@ namespace RawTorpedo.Models.Seed
             SeedPublishers.Initialize(context);
             SeedThemes.Initialize(context);
             SeedGames.Initialize(context);
-            //SeedCollections.Initialize(context);
+            SeedCollections.Initialize(context);
 
             context.SaveChanges();
         }
