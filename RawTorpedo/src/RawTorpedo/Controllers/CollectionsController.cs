@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNet.Mvc;
 using RawTorpedo.Models;
 using Microsoft.Data.Entity;
+using System.Security.Claims;
 
 namespace RawTorpedo.Controllers
 {
@@ -17,7 +18,12 @@ namespace RawTorpedo.Controllers
         // GET: Collections
         public IActionResult Index()
         {
-            return View(_context.Collection.Include(x => x.Game).Include(x => x.User).ToList());
+            if (!User.IsSignedIn())
+                return RedirectToAction("Index", "GamesController");
+
+            var user = _context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name); // User.Identity.Name is going to map to the ApplicationUser.Username aka email address
+
+            return View(_context.Collection.Where(x => x.User.Id == user.Id).Include(x => x.Game).Include(x => x.User).ToList());
         }
 
         // GET: Collections/Details/5
